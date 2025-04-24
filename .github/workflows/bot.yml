@@ -18,15 +18,14 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-        - name: Set PYTHONPATH
-          run: echo "PYTHONPATH=$
-      {{ github.workspace }}/ebAlert" >> 
-      $GITHUB_ENV
-      
-      - name: Run bot
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python ebAlert/main.py
+    run: |
+      pip install -r requirements.txt
+
+  - name: Set PYTHONPATH
+    run: echo "PYTHONPATH=${{ github.workspace }}/ebAlert" >> $GITHUB_ENV
+
+  - name: Run bot
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    run: python ebAlert/main.py
