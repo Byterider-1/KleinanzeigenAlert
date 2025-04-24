@@ -1,3 +1,4 @@
 sqlalchemy==1.4.49
 requests
 beautifulsoup4
+click
